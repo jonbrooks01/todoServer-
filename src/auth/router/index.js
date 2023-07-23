@@ -9,11 +9,19 @@ const {
   handleSignin,
   handleSignup,
   handleGetUsers,
-  handleSecret
+  handleSecret,
 } = require('./handlers.js');
 
 authRouter.post('/signup', handleSignup);
-authRouter.post('/signin', basicAuth, handleSignin);
+authRouter.post(
+  '/signin',
+  (req, res, next) => {
+    console.log('We are in the signin route');
+    next();
+  },
+  basicAuth,
+  handleSignin
+);
 authRouter.get('/users', bearerAuth, handleGetUsers);
 authRouter.get('/secret', bearerAuth, handleSecret);
 
