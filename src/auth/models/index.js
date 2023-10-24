@@ -6,17 +6,13 @@ const userSchema = require('./users.js');
 const todo = require('./todo.js');
 const Collection = require('./collection.js');
 
-const POSTGRES_URI =
+const DATABASE_URL =
   process.env.NODE_ENV === 'test' ? 'sqlite::memory' : process.env.DATABASE_URL;
-
+//const users = userSchema(sequelize, Datatypes);
 const DATABASE_CONFIG =
-  process.env.NODE_ENV === 'production'
-    ? {
-        dialectOptions: {},
-      }
-    : {};
+  process.env.NODE_ENV === 'production' ? { dialectOptions: {} } : {};
 
-const sequelize = new Sequelize(POSTGRES_URI);
+const sequelize = new Sequelize(DATABASE_URL, DATABASE_CONFIG);
 const todoModel = todo(sequelize, DataTypes);
 const todoCollection = new Collection(todoModel);
 

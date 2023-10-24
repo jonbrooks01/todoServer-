@@ -5,6 +5,7 @@ const { users } = require('../models/index.js');
 async function handleSignup(req, res, next) {
   try {
     let userRecord = await users.create(req.body);
+    console.log(userRecord);
     const output = {
       user: userRecord,
       token: userRecord.token,
@@ -24,7 +25,7 @@ async function handleSignin(req, res, next) {
     };
     res.status(200).json(user);
   } catch (e) {
-    console.error(e);
+    // console.error(e);
     next(e);
   }
 }
