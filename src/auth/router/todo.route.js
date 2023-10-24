@@ -2,7 +2,7 @@
 
 const express = require('express');
 
-const { todoCollection } = require('../models/index.model');
+const { todoCollection } = require('../models/index.js');
 
 const router = express.Router();
 

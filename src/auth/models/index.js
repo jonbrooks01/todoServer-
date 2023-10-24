@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
-const userSchema = require('./users.js');
+const userSchema = require('./users');
 const todo = require('./todo.js');
 const Collection = require('./collection.js');
 
